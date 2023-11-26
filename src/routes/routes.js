@@ -1,11 +1,3 @@
-const express = require('express');
-const OrderController = require("./controller/orderController");
-const OrderItemsController = require("./controller/orderItemsController");
-const PaymentInfoController = require("./controller/paymentInfoController");
-
-const router = express.Router();
-//const UserController = require('./controller/userController');
-
 
 module.exports = app => {
     const bodyParser = require('body-parser');
@@ -20,6 +12,8 @@ module.exports = app => {
     const OrderItemsController = require('./controller/orderItemsController');
     const OrderHistoryController = require('./controller/orderHistoryController');
     const PaymentInfoController = require('./controller/paymentInfoController');
+    const DelvieryDriverController = require('./controller/deliverDriverController');
+    const MessageController = require('./controller/messageController');
 
 
 
@@ -85,6 +79,29 @@ module.exports = app => {
     app.get("/paymentInfo/user/:userId",PaymentInfoController.getPaymentInfoByUserId);
     app.put("/paymentInfo/update/:paymentInfoId",PaymentInfoController.updatePaymentInfo);
     app.delete("/paymentInfo/delete/:paymentInfoId",PaymentInfoController.deletePaymentInfoById);
+
+    //Delivery Driver Routes
+    app.post("/drivers/create",DelvieryDriverController.createDeliveryDriver);
+    app.get("/drivers/",DelvieryDriverController.getAllDeliveryDrivers);
+    app.get("/drivers/:driverId",DelvieryDriverController.getDeliveryDriverById);
+    app.put("/drivers/update/:driverId",DelvieryDriverController.updateDeliveryDriver);
+    app.delete("/drivers/delete/:driverId",DelvieryDriverController.deleteDeliveryDriverById);
+
+
+    //NEW ORDER PROCESS ROUTE
+    app.put("/orders/process/:orderId",OrderController.processOrder);
+
+    //Message Routes
+
+    app.post("/messages/create",MessageController.createMessage);
+    app.get("/messages/",MessageController.getAllMessages);
+    app.get("/messages/:messageId",MessageController.getMessageById);
+    app.get("/messages/:userId1/:userId2",MessageController.getMessagesBetweenUsers);
+    app.put("/messages/update/:messageId",MessageController.updateMessage);
+    app.delete("/message/delete/:messageId",MessageController.deleteMessageById);
+
+
+
 
 
 
