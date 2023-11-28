@@ -10,6 +10,8 @@ async function createMenuItem(req, res) {
             price,
             availability,
             image_url,
+            allergy_info,
+            calories       
         } = req.body;
 
         // Create a new menu item document
@@ -20,6 +22,8 @@ async function createMenuItem(req, res) {
             price,
             availability,
             image_url,
+            allergy_info, 
+            calories       
         });
 
         // Save the menu item to the database

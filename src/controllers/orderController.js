@@ -22,7 +22,10 @@ async function createOrder(req, res) {
             delivery_address: order.delivery_address,
             total_price: order.total_price, // This is now correctly referenced
             payment_info_id: order.payment_info_id, // Make sure this field exists in your payload or model
-            order_items: req.body.orderItems // Assuming order_items is at the top level of the request body
+            order_items: req.body.orderItems, // Assuming order_items is at the top level of the request body
+            driver : order.driver,
+            tax : order.tax,
+            discount: order.discount
         });
 
         const savedOrder = await newOrder.save();

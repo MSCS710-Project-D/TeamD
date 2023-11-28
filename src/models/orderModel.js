@@ -33,7 +33,23 @@ const orderSchema = new mongoose.Schema({
     },
     order_items: {
         type: Array
-    }
+    },
+    payment_info_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'PaymentInfo', // Foreign Key reference to PaymentInfo
+    },
+    driver: {
+        type: String,
+        ref: "deliveryDriver"
+    },
+    tax: {
+        type: Number,
+        required: true
+    },
+    discount: {
+        type: Number,
+    },
+
 });
 
 // Create and export the Order model

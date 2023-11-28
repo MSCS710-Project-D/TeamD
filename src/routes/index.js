@@ -11,7 +11,7 @@ const DelvieryDriverController = require('../controllers/deliverDriverController
 const Restaurant = require('../models/restaurantModel');
 const path = require('path');
 const fs = require('fs');
-
+const MessageController = require('../controllers/messageController');
 const userRoutes = require('./user');
 
 router.get('/restaurant-images/:restaurant_id', async (req, res) => {
@@ -98,5 +98,15 @@ router.get('/orders/history/:userId',OrderController.getOrdersByUserId);
 
  //NEW ORDER PROCESS ROUTE
 router.put("/orders/process/:orderId",OrderController.processOrder);
+
+//Message Routes
+router.post("/messages/create",MessageController.createMessage);
+router.get("/messages/",MessageController.getAllMessages);
+router.get("/messages/:messageId",MessageController.getMessageById);
+router.get("/messages/:userId1/:userId2",MessageController.getMessagesBetweenUsers);
+router.put("/messages/update/:messageId",MessageController.updateMessage);
+router.delete("/message/delete/:messageId",MessageController.deleteMessageById);
+
+
 
 module.exports = router;
