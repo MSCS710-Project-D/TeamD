@@ -43,6 +43,7 @@ module.exports = app => {
     //Menu Items Routes
     app.post("/menuItems/create",MenuItemsController.createMenuItem);
     app.get('/menuItems/menu/:menuItemId',MenuItemsController.getMenuItemById);
+    app.get('/menuItems/',MenuItemsController.getAllMenuItems);
 
     //Input the restaurant Id to get all menu items from that specific restaurant
     app.get('/menuItems/restaurant/:restaurantId',MenuItemsController.getAllMenuItemsForRestaurant);
