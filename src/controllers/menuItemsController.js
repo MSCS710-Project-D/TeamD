@@ -64,6 +64,18 @@ async function getMenuItemById(req, res) {
     }
 }
 
+//Read all menu items
+async function getAllMenuItems(req, res) {
+    try {
+        const menuItems = await MenuItem.find();
+
+        res.status(200).json(menuItems);
+    } catch (error) {
+        console.error('Error fetching all menu items:', error);
+        res.status(500).json({ error: 'Unable to fetch menu items' });
+    }
+}
+
 // Update a menu item by ID
 async function updateMenuItem(req, res) {
     try {
@@ -107,5 +119,5 @@ async function deleteMenuItemById(req, res) {
 }
 
 module.exports = {
-    createMenuItem, getAllMenuItemsForRestaurant, getMenuItemById, updateMenuItem, deleteMenuItemById,
+    createMenuItem, getAllMenuItemsForRestaurant, getMenuItemById, updateMenuItem, deleteMenuItemById, getAllMenuItems
 };
